@@ -1,0 +1,20 @@
+{%- set ip = salt['network.interfaces']()['eth1']['inet'][0]['address'] %}
+{
+  "advertise_addr": "{{ ip }}",
+  "bind_addr": "{{ ip }}",
+  "bootstrap_expect": 1,
+  "client_addr": "0.0.0.0",
+  "data_dir": "/opt/consul",
+  "datacenter": "datacenter",
+  "encrypt": "{{ pillar['consul_key'] }}",
+  "node_name": "{{ grains['nodename'] }}",
+  "retry_join": [
+{%- for server in pillar['consul_servers'] %}
+    "{{ server }}",
+{%- endfor %}
+  ],
+  "server": true,
+  "ui_config": {
+    "enabled": true
+  }
+}
