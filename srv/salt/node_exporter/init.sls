@@ -21,31 +21,6 @@ node_exporter binary:
     - mode: 0644
 
 
-/etc/consul.d/node_exporter.hcl:
-  file.managed:
-    - contents: |
-        {
-          "service": {
-            "name": "node_exporter",
-            "tags": [
-              "node_exporter",
-              "prometheus"
-            ],
-            "port": 9100,
-            "checks": [
-              {
-                "http": "http://localhost:9100/metrics",
-                "interval": "10s",
-                "timeout": "1s"
-              }
-            ],
-          }
-        }
-    - user: consul
-    - group: consul
-    - mode: 0644
-
-
 node_exporter service:
   service.running:
     - name: node_exporter

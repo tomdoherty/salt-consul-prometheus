@@ -1,0 +1,13 @@
+# vim: ft=jinja :
+
+{#- Get the `tplroot` from `tpldir` #}
+{%- set tplroot = tpldir.split('/')[0] %}
+{#- Start imports as #}
+{%- import_yaml tplroot ~ "/defaults.yaml" as default_settings %}
+
+{%- set defaults = salt['grains.filter_by'](default_settings,
+    default='consul', merge=salt['pillar.get']('consul:lookup', default={})
+) %}
+
+{#- Merge the consul pillar #}
+{%- set consul = salt['pillar.get']('consul', default=defaults, merge=True) %}

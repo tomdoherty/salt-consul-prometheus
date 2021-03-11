@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
+consul:
+  url: https://releases.hashicorp.com/consul/1.9.2/consul_1.9.2_linux_amd64.zip
+  sha: 5141b2e7f54b51e07601d2b4ff1853f1d9b8e26b26bfb55281a8c47d8581352e
+  user: consul
+  group: consul
+  home: /etc/consul.d
