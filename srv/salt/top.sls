@@ -3,7 +3,7 @@
 base:
   '*':
     - common
-    - consul.install
-    - node_exporter.install
+    - consul
+    - node_exporter
   'master':
-    - prometheus.install
+    - prometheus

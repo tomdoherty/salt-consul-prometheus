@@ -5,7 +5,7 @@ Playing with [SaltStack](https://www.saltstack.com), [Consul](https://www.consul
 
 ```shell
 $ vagrant up
-$ vagrant login master
+$ vagrant ssh master
 
 master$ sudo salt-key -Ay
 master$ sudo salt '*' state.highstate
